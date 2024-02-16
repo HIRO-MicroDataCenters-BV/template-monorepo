@@ -59,7 +59,7 @@ pre-commit install
 
 ## Add a new microservice
 1. Create a subdirectory at the root of the repository and copy the microservice's source code into it.
-2. Create a folder named microservice in .github/workflows and place the files to build and deploy your microservice into this folder.
+2. Create a file .github/workflows/`<microservice-name>`.yaml to build, test and deploy your microservice.
 3. Add microservice hooks to the .pre-commit-config.yaml.
 4. Go to the microservice folder and install dependencies.
 5. Go back to the root of the repository and commit changes.
