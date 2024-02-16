@@ -1,0 +1,35 @@
+default_stages: [commit, push]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: trailing-whitespace
+        exclude:
+          README.md
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.9.0
+    hooks:
+    -   id: shellcheck
+
+  - repo: local
+    hooks:
+      - id: microservice1_flake8
+        name: microservice1_flake8
+        files: ^microservice1/
+        entry: poetry --directory microservice1 run flake8
+        language: system
+        types: [python]
+
+  - repo: local
+    hooks:
+      - id: microservice2_flake8
+        name: microservice2_flake8
+        files: ^microservice2/
+        entry: poetry --directory microservice2 run flake8
+        language: system
+        types: [python]

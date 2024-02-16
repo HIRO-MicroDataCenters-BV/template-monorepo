@@ -1,0 +1,19 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "microservice2"
+version = "0.1.0"
+description = "Test microservice 2"
+authors = ["HIRO-MicroDataCenters <all-hiro@hiro-microdatacenters.nl>"]
+packages = [{include = "*", from="app"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4"

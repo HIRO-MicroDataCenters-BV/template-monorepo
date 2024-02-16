@@ -1,0 +1,31 @@
+name: Test microservice1
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./microservice1
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry install --no-root --with dev,test
+
+      - name: Format checks
+        run: poetry run flake8 .
+
+      - name: Run tests
+        run: poetry run pytest
